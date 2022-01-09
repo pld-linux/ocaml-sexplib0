@@ -41,7 +41,7 @@ używających biblioteki sexplib0.
 
 %package devel
 Summary:	OCaml sexplib0 library - development part
-Summary(pl.UTF-8):	Biblioteka OCamla sexplib0 - cześć programistyczna
+Summary(pl.UTF-8):	Biblioteka OCamla sexplib0 - część programistyczna
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 %requires_eq	ocaml
