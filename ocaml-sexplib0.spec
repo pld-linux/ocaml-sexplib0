@@ -10,16 +10,16 @@
 Summary:	Library containing the definition of S-expressions and some base converters
 Summary(pl.UTF-8):	Biblioteka z definicjami S-wyrażeń i podstawowych konwerterów
 Name:		ocaml-sexplib0
-Version:	0.14.0
+Version:	0.17.0
 Release:	1
 License:	MIT
 Group:		Libraries
 #Source0Download: https://github.com/janestreet/sexplib0/releases
 Source0:	https://github.com/janestreet/sexplib0/archive/v%{version}/sexplib0-%{version}.tar.gz
-# Source0-md5:	dc32962c9596f55db4a607f0536b6f23
+# Source0-md5:	abafe8fd1d6302e55a315f4d78960d2a
 URL:		https://github.com/janestreet/sexplib0/
-BuildRequires:	ocaml >= 1:4.04.2
-BuildRequires:	ocaml-dune >= 2.0.0
+BuildRequires:	ocaml >= 1:4.14.0
+BuildRequires:	ocaml-dune >= 3.11
 %requires_eq	ocaml-runtime
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -57,6 +57,8 @@ używających biblioteki sexplib0.
 %prep
 %setup -q -n sexplib0-%{version}
 
+%{__rm} -r bench test
+
 %build
 dune build --verbose
 
@@ -68,7 +70,7 @@ dune install --destdir=$RPM_BUILD_ROOT
 # sources
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/ocaml/sexplib0/*.ml
 # packaged as %doc
-%{__rm} -r $RPM_BUILD_ROOT%{_prefix}/doc/sexplib0
+%{__rm} -r $RPM_BUILD_ROOT%{_docdir}/sexplib0
 
 %clean
 rm -rf $RPM_BUILD_ROOT
